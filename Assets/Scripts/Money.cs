@@ -3,15 +3,15 @@ using TMPro;
 
 public class Money : MonoBehaviour
 {
-    public int money = 0;
+    Kingdom kingdom;
     public TMP_Text moneyCounter;
     void Start()
     {
-        
+         kingdom = GetComponent<Kingdom>();
     }
 
     void Update()
     {
-        moneyCounter.text = "Tokens: "+money;
+        moneyCounter.text = "Gold: "+kingdom.money;
     }
 }

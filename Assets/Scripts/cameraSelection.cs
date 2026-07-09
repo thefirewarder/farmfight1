@@ -1,19 +1,16 @@
 using UnityEngine;
-
+using System.Linq;
 public class cameraSelection : MonoBehaviour
 {
     public tileMap map;
     public Inventory inventory;
 
-    public Wall wallScript;
-
-    public Money moneyScript;
+   Kingdom kingdom;
     void Start()
     {
-        wallScript = FindFirstObjectByType<Wall>();
+        kingdom = GameObject.FindWithTag("Player").GetComponent<Kingdom>();
         map = FindFirstObjectByType<tileMap>();
         inventory = FindFirstObjectByType<Inventory>();
-        moneyScript = FindFirstObjectByType<Money>();
     }
 
     void Update()
@@ -27,17 +24,17 @@ public class cameraSelection : MonoBehaviour
         tileData worldData = worldPos.GetComponent<tileData>();
         
         if(Input.GetMouseButtonDown(0)){
-            if(worldData.type == "wall" && moneyScript.money > 0 && wallScript.wallStrength < wallScript.maxStrength)
+            if(worldData.type == "wall" && kingdom.money > 0 && kingdom.wallStrength < kingdom.maxStrength)
                 {
-                    int moneyRequired = (int) ((wallScript.maxStrength - wallScript.wallStrength) * 20);
-                    if(moneyRequired >= moneyScript.money){
-                    wallScript.wallStrength += moneyScript.money / 20f;
-                    moneyScript.money = 0;
+                    int moneyRequired = (int) ((kingdom.maxStrength - kingdom.wallStrength) * 20);
+                    if(moneyRequired >= kingdom.money){
+                    kingdom.wallStrength += kingdom.money / 20f;
+                    kingdom.money = 0;
                     }
                     else
                     {
-                        moneyScript.money -= moneyRequired;
-                        wallScript.wallStrength = wallScript.maxStrength;
+                        kingdom.money -= moneyRequired;
+                        kingdom.wallStrength = kingdom.maxStrength;
                     }
                 }
                  if(worldData.playerControlled){

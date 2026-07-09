@@ -4,14 +4,14 @@ using TMPro;
 public class Troops : MonoBehaviour
 {
     public TMP_Text troopCounter;
-    public int currentTroops = 0;
+    Kingdom kingdom;
     void Start()
     {
-        
+        kingdom = GetComponent<Kingdom>();
     }
     
     void Update()
     {
-        troopCounter.text = "Troops: "+currentTroops;
+        troopCounter.text = "Troops: "+kingdom.troops;
     }
 }

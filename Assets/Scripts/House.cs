@@ -5,14 +5,14 @@ public class House : MonoBehaviour
     Food foodScript;
     public float timerLength;
     
-    Troops troopScript;
+    Kingdom kingdom;
     tileData data;
     public float timer = 0f;
     void Start()
     {
         data = GetComponent<tileData>();
         foodScript = FindFirstObjectByType<Food>();
-        troopScript = FindFirstObjectByType<Troops>();
+        kingdom = GameObject.FindWithTag("Player").GetComponent<Kingdom>();
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class House : MonoBehaviour
                 {
                     if(data.map.getTileAtPosition(new Vector2Int(x, y)).GetComponent<tileData>().type == "camp")
                     {
-                        troopScript.currentTroops++;
+                        kingdom.troops++;
                     }
                 }
             }

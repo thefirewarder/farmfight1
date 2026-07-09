@@ -3,16 +3,14 @@ using UnityEngine;
 public class Market : MonoBehaviour
 {
     Food foodScript;
-    Money moneyScript;
-
     public int landCost = 15;
     public int campCost = 35;
-
+    Kingdom kingdom;
     Inventory invScript;
      void Start()
     {
+        kingdom = GetComponent<Kingdom>();
         foodScript = GetComponent<Food>();
-        moneyScript = GetComponent<Money>();
         invScript = GetComponent<Inventory>();
     }
 
@@ -21,24 +19,24 @@ public class Market : MonoBehaviour
         if(foodScript.currentFood >= 1)
         {
             foodScript.currentFood--;
-            moneyScript.money++;
+            kingdom.money++;
         }
     }
 
     public void buyLand()
     {
-        if(moneyScript.money >= landCost)
+        if(kingdom.money >= landCost)
         {
-            moneyScript.money -= landCost;
+            kingdom.money -= landCost;
             invScript.addItems(new invItem("land", 1));
         }
     }
 
     public void buyTrainingCamp()
     {
-        if(moneyScript.money >= campCost)
+        if(kingdom.money >= campCost)
         {
-            moneyScript.money -= campCost;
+            kingdom.money -= campCost;
             invScript.addItems(new invItem("camp", 1));
         }
     }

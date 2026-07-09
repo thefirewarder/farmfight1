@@ -3,17 +3,17 @@ using UnityEngine;
 public class WallDmgDisplay : MonoBehaviour
 {
     SpriteRenderer renderer;
-    Wall wallScript;
+    Kingdom kingdom;
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
-        wallScript = FindFirstObjectByType<Wall>();
+        kingdom = GameObject.FindWithTag("Player").GetComponent<Kingdom>();
     }
 
     void Update()
     {
         Color tmpColor = renderer.color;
-        tmpColor.a = wallScript.wallStrength / wallScript.maxStrength;
+        tmpColor.a = kingdom.wallStrength / kingdom.maxStrength;
         renderer.color = tmpColor;
     }
 }
