@@ -6,8 +6,8 @@ public class AttackSelection : MonoBehaviour
     private Kingdom playerKingdom;
     private Kingdom fireKingdom; 
     private Kingdom pirateKingdom; 
-    
     public TMP_InputField input; 
+    
     public TMP_Dropdown civDropdown; 
 
     void Start() 
@@ -20,27 +20,43 @@ public class AttackSelection : MonoBehaviour
         civDropdown.onValueChanged.AddListener(OnCivSelected);
     } 
 
-    void OnCivSelected(int index) 
-    { 
-        if (index == 0) return;
-        if (playerKingdom.invadee) return; 
-        if (!int.TryParse(input.text, out int troopsSent) || troopsSent <= 0 || troopsSent > playerKingdom.troops) return;
+    void OnCivSelected(int index)
+{
+    if (index == 0) return;
 
-        Kingdom targetKingdom = index switch
-        {
-            1 => fireKingdom,
-            2 => pirateKingdom,
-            _ => null
-        };
+    if (!int.TryParse(input.text, out int troopsSent) ||
+        troopsSent <= 0 ||
+        troopsSent > playerKingdom.troops)
+        return;
 
-        if (targetKingdom != null)
-        {
-            civDropdown.SetValueWithoutNotify(0); 
-            
-            playerKingdom.invadee = targetKingdom;
-            playerKingdom.troopsInvading = troopsSent; 
-            playerKingdom.troops -= troopsSent;
-            playerKingdom.StartArmyMarch();
-        }
+    if (index == 3)
+    {
+        playerKingdom.troopsMining = troopsSent;
+        playerKingdom.troops -= troopsSent;
+        playerKingdom.StartMineMarch();
+        civDropdown.SetValueWithoutNotify(0);
+        return;
     }
+
+    Kingdom targetKingdom = index switch
+    {
+        1 => fireKingdom,
+        2 => pirateKingdom,
+        _ => null
+    };
+
+    if (targetKingdom == null)
+        return;
+
+    if (playerKingdom.invadee != null)
+        return;
+
+    playerKingdom.invadee = targetKingdom;
+    playerKingdom.troopsInvading = troopsSent;
+    playerKingdom.troops -= troopsSent;
+    playerKingdom.StartArmyMarch();
+
+    civDropdown.SetValueWithoutNotify(0);
+}
+
 }

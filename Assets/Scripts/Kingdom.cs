@@ -10,10 +10,14 @@ public class Kingdom : MonoBehaviour
     public float maxStrength;
     public Kingdom invadee;
     public int troopsInvading;
+    public int troopsMining;
+    public float mineMultiplier;
+
+    public int mineDistance = 150;
 
     public int totalTroops()
     {
-        return troops + troopsInvading;
+        return troops + troopsInvading + troopsMining;
     }
     public void StartArmyMarch()
     {
@@ -35,6 +39,12 @@ public class Kingdom : MonoBehaviour
         Invoke(nameof(TravelBack), travelDuration * 2);
     }
 
+    public StartMineMarch()
+    {
+        Debug.Log("A group of troops from the "+name+" kingdom is going mining!");
+        
+        Invoke(nameof(returnFromMining), mineDistance * 2);
+    }
     void TravelBack()
     {
         troops += troopsInvading;
@@ -93,5 +103,14 @@ public class Kingdom : MonoBehaviour
             invadee.wallStrength = 0;
             Debug.Log("The invadee was sacked. Badly. All of their gold was taken, half of their troops were killed and their wall was obliterated.");
         }
+    }
+
+    void returnFromMining()
+    {
+        int moneyMade = (int) Random.Range(0f, 2f) * mineMultiplier * troopsMining;
+        troops += troopsMining;
+        troopsMining = 0;
+        money += moneyMade;
+        Debug.Log("Your troops have returned with "+moneyMade+" gold!");
     }
 }
