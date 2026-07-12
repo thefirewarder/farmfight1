@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5981700963623029026}
   - component: {fileID: 1728872726873620287}
+  - component: {fileID: -1007263464451765641}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Untagged
@@ -91,3 +92,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &-1007263464451765641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962236549999959763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb6dcbc9221bcd4389bd64f0e6a6322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grow
+  timer: 0
+  timer2: 0
+  timerLength: 5
+  timer2Length: 8

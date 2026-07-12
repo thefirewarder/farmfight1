@@ -290,6 +290,9 @@ MonoBehaviour:
   maxStrength: 0.7
   invadee: {fileID: 0}
   troopsInvading: 0
+  troopsMining: 0
+  mineMultiplier: 0
+  mineDistance: 150
 --- !u!4 &68709887
 Transform:
   m_ObjectHideFlags: 0
@@ -321,9 +324,9 @@ MonoBehaviour:
   enemyKingdom: {fileID: 0}
   elapsedTime: 0
   targetTime: 0
-  invasionInterval: 60
+  invasionInterval: 75
   invasionDeviation: 15
-  minInvasionTime: 75
+  minInvasionTime: 90
   fearThreshold: 150
   troopThreshold: 100
   spu: 1
@@ -2512,7 +2515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: 220}
+  m_AnchoredPosition: {x: 90, y: 185}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254368966
@@ -3215,7 +3218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy Training Camp
+  m_text: Buy Training Camp (35)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3242,8 +3245,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3710,9 +3713,9 @@ MonoBehaviour:
   enemyKingdom: {fileID: 0}
   elapsedTime: 0
   targetTime: 0
-  invasionInterval: 90
-  invasionDeviation: 10
-  minInvasionTime: 240
+  invasionInterval: 105
+  invasionDeviation: 12
+  minInvasionTime: 275
   fearThreshold: 375
   troopThreshold: 350
   spu: 0.95
@@ -3736,6 +3739,9 @@ MonoBehaviour:
   maxStrength: 0.9
   invadee: {fileID: 0}
   troopsInvading: 0
+  troopsMining: 0
+  mineMultiplier: 0
+  mineDistance: 150
 --- !u!4 &1646272685
 Transform:
   m_ObjectHideFlags: 0
@@ -3808,7 +3814,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buy Land
+  m_text: Buy Land (15)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4201,6 +4207,9 @@ MonoBehaviour:
   maxStrength: 0.5
   invadee: {fileID: 0}
   troopsInvading: 0
+  troopsMining: 0
+  mineMultiplier: 8
+  mineDistance: 150
 --- !u!1 &1951926938
 GameObject:
   m_ObjectHideFlags: 0
@@ -4688,7 +4697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: 220}
+  m_AnchoredPosition: {x: -90, y: 185}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137083869

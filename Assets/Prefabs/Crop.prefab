@@ -105,4 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   timer: 0
+  timer2: 0
   timerLength: 5
+  timer2Length: 8

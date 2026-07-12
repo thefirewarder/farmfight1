@@ -39,7 +39,7 @@ public class Kingdom : MonoBehaviour
         Invoke(nameof(TravelBack), travelDuration * 2);
     }
 
-    public StartMineMarch()
+    public void StartMineMarch()
     {
         Debug.Log("A group of troops from the "+name+" kingdom is going mining!");
         
@@ -107,7 +107,7 @@ public class Kingdom : MonoBehaviour
 
     void returnFromMining()
     {
-        int moneyMade = (int) Random.Range(0f, 2f) * mineMultiplier * troopsMining;
+        int moneyMade = (int) (Random.Range(0.5f, 2f) * mineMultiplier * troopsMining);
         troops += troopsMining;
         troopsMining = 0;
         money += moneyMade;
