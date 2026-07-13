@@ -5020,10 +5020,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   name: John Smith
-  atk: 1.2
+  atk: 0.9
   def: 0.9
   speed: 1.2
-  siege: 0.75
+  siege: 1.05
   looting: 1
 --- !u!1 &1646272682
 GameObject:
@@ -6779,7 +6779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d2d51f9977b0640b16e516cd578b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kingdom
-  name: Puffy Pirates
+  name: Chicken Bandits
   troops: 1000
   money: 650
   distance: 75
