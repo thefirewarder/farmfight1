@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - Pirate
+  - Bandit
   layers:
   - Default
   - TransparentFX

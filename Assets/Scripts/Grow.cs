@@ -39,7 +39,7 @@ public class Grow : MonoBehaviour
         if(timer2 > timer2Length)
         {
             if(gameObject.name == "Dirt(Clone)" && houses >= 3){
-            data.map.setTile(data.location, "grass");
+            data.map.setTile(data.location, "crop");
             }
             timer2 = 0f;
         }

@@ -10,25 +10,24 @@ public class Kingdom : MonoBehaviour
     public float maxStrength;
     public Kingdom invadee;
     public int troopsInvading;
-    public int troopsMining;
-    public float mineMultiplier;
+    public General general;
 
     public int mineDistance = 150;
 
     public int totalTroops()
     {
-        return troops + troopsInvading + troopsMining;
+        return troops + troopsInvading;
     }
     public void StartArmyMarch()
     {
-        Debug.Log("An army from the " + name + " kingdom is approaching the "+invadee.name+" kingdom!");
+        Debug.Log("An army from the " + name + " kingdom led by "+general.name+" is approaching the "+invadee.name+" kingdom!");
         
         if(distance > 0){
         troopsInvading = (int) troops / 2;
         troops -= troopsInvading;
         }
 
-        float travelDuration = Mathf.Abs(distance - invadee.distance);
+        float travelDuration = Mathf.Abs(distance - invadee.distance) / general.speed;
         if(distance == 0)
         {
             Invoke(nameof(Invade), travelDuration * 2);
@@ -39,12 +38,6 @@ public class Kingdom : MonoBehaviour
         Invoke(nameof(TravelBack), travelDuration * 2);
     }
 
-    public void StartMineMarch()
-    {
-        Debug.Log("A group of troops from the "+name+" kingdom is going mining!");
-        
-        Invoke(nameof(returnFromMining), mineDistance * 2);
-    }
     void TravelBack()
     {
         troops += troopsInvading;
@@ -60,10 +53,10 @@ public class Kingdom : MonoBehaviour
             return;
         }
 
-        Debug.Log("The " + name + " kingdom has invaded the " + invadee.name + " kingdom! ");
+        Debug.Log("An army from the " + name + " kingdom led by "+general.name+" has invaded the " + invadee.name + " kingdom! ");
         
-        int invaderStrength = (int) (troopsInvading * Random.Range(0.85f, 1.15f));
-        int invadeeStrength = (int)(invadee.troops * (invadee.wallStrength + 1) * Random.Range(0.85f, 1.15f));
+        int invaderStrength = (int) (troopsInvading * Random.Range(0.85f, 1.15f) * general.atk);
+        int invadeeStrength = (int)(invadee.troops * ((invadee.wallStrength / general.siege) + 1) * Random.Range(0.85f, 1.15f));
         
         if (invaderStrength <= 0)
         {
@@ -76,22 +69,22 @@ public class Kingdom : MonoBehaviour
         
         if (result > 2.5f)
         {
-            troopsInvading = troopsInvading / 2;
+            troopsInvading -= (int) (troopsInvading / (2 * general.def));
             Debug.Log("The invader lost half their troops!");
         }
         else if (result > 1f)
         {
-            troopsInvading = (int)(troopsInvading / Random.Range(1.2f, 1.8f));
+            troopsInvading -= (int)(troopsInvading * (1 - 1/Random.Range(1.2f, 1.8f)) * general.def);
             invadee.troops = (int)(invadee.troops / Random.Range(1.1f, 1.5f));
             Debug.Log("Some troops didn't make it.");
         }
         else if (result > 0.4f)
         {
-            int moneyLost = (int)(invadee.money * Random.Range(0.2f, 0.4f));
+            int moneyLost = (int)(invadee.money * Random.Range(0.2f, 0.4f)* general.looting);
             money += moneyLost;
             invadee.money -= moneyLost;
             invadee.troops = (int)(invadee.troops / Random.Range(1.2f, 1.8f));
-            troopsInvading = (int)(troopsInvading / Random.Range(1.1f, 1.5f));
+            troopsInvading = (int)(troopsInvading * (1 - 1 / Random.Range(1.1f, 1.5f)));
             invadee.wallStrength *= Random.Range(0.3f, 0.6f);
             Debug.Log("The invadee was robbed of " + moneyLost + " gold. Their wall was damaged and some troops didn't make it");
         }
@@ -103,14 +96,5 @@ public class Kingdom : MonoBehaviour
             invadee.wallStrength = 0;
             Debug.Log("The invadee was sacked. Badly. All of their gold was taken, half of their troops were killed and their wall was obliterated.");
         }
-    }
-
-    void returnFromMining()
-    {
-        int moneyMade = (int) (Random.Range(0.5f, 2f) * mineMultiplier * troopsMining);
-        troops += troopsMining;
-        troopsMining = 0;
-        money += moneyMade;
-        Debug.Log("Your troops have returned with "+moneyMade+" gold!");
     }
 }

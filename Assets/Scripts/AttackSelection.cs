@@ -6,6 +6,7 @@ public class AttackSelection : MonoBehaviour
     private Kingdom playerKingdom;
     private Kingdom fireKingdom; 
     private Kingdom pirateKingdom; 
+    private Kingdom banditKingdom;
     public TMP_InputField input; 
     
     public TMP_Dropdown civDropdown; 
@@ -16,6 +17,7 @@ public class AttackSelection : MonoBehaviour
         playerKingdom = GameObject.FindWithTag("Player").GetComponent<Kingdom>(); 
         fireKingdom = GameObject.FindWithTag("Fire").GetComponent<Kingdom>(); 
         pirateKingdom = GameObject.FindWithTag("Pirate").GetComponent<Kingdom>(); 
+        banditKingdom = GameObject.FindWithTag("Bandit").GetComponent<Kingdom>(); 
 
         civDropdown.onValueChanged.AddListener(OnCivSelected);
     } 
@@ -29,19 +31,11 @@ public class AttackSelection : MonoBehaviour
         troopsSent > playerKingdom.troops)
         return;
 
-    if (index == 3)
-    {
-        playerKingdom.troopsMining = troopsSent;
-        playerKingdom.troops -= troopsSent;
-        playerKingdom.StartMineMarch();
-        civDropdown.SetValueWithoutNotify(0);
-        return;
-    }
-
     Kingdom targetKingdom = index switch
     {
         1 => fireKingdom,
         2 => pirateKingdom,
+        3 => banditKingdom,
         _ => null
     };
 

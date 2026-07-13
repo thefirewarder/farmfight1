@@ -13,6 +13,7 @@ public class InitiateInvasion : MonoBehaviour
 
     public int fearThreshold = 150;
     public int troopThreshold = 100;
+    public float healSpeed = 0.01f;
     public float spu = 1f;
 
     void Start()
@@ -48,6 +49,9 @@ public class InitiateInvasion : MonoBehaviour
         {
             enemyKingdom.troops++;
             enemyKingdom.money++;
+        }
+        if(enemyKingdom.wallStrength < enemyKingdom.maxStrength){
+            enemyKingdom.wallStrength += healSpeed;
         }
         Invoke(nameof(IncrementTroops), spu);
     }

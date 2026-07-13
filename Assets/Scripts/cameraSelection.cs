@@ -53,6 +53,7 @@ public class cameraSelection : MonoBehaviour
                     return;
                 }
                 string itemType = inventory.items[0].type;
+                invItem item = new invItem(inventory.items[0].type, 1);
                 bool wasRemoved = inventory.removeItems(new invItem(inventory.items[0].type, 1));
                 if (wasRemoved)
                 {
@@ -62,10 +63,16 @@ public class cameraSelection : MonoBehaviour
                         {
                             map.setTile(worldCoords,"dirt");
                         }
+                        else{
+                            inventory.addItems(item);
+                        }
                         break;
                         default:
                         if(worldData.playerControlled){
                         map.setTile(worldCoords, itemType);
+                        }
+                        else{
+                            inventory.addItems(item);
                         }
                         break;
                     }
