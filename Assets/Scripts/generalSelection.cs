@@ -23,7 +23,7 @@ public class generalSelection : MonoBehaviour
         genDropdown.AddOptions(text);
         genDropdown.value = currentIndex;
     }
-    void SelectGeneral(int index){
+    public void SelectGeneral(int index){
         playerKingdom.general = ownedGenerals.generalsOwned[index];
     }
 }

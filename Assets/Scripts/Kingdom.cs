@@ -16,7 +16,13 @@ public class Kingdom : MonoBehaviour
 
     void Start()
     {
+        if(distance == 0){
         general = GetComponent<OwnedGenerals>().startingGeneral;
+        }
+        else
+        {
+        general = GetComponent<General>();
+        }
     }
     public int totalTroops()
     {
