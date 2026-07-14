@@ -14,6 +14,10 @@ public class Kingdom : MonoBehaviour
 
     public int mineDistance = 150;
 
+    void Start()
+    {
+        general = GetComponent<OwnedGenerals>().startingGeneral;
+    }
     public int totalTroops()
     {
         return troops + troopsInvading;
