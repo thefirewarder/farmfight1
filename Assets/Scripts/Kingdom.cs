@@ -1,7 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
-
-public record resource(string type, int amount);
+using System;
+[System.Serializable] 
+public class resource{
+    public string type;
+    public int amount;
+    public resource(string type1, int amount1)
+    {
+        type = type1;
+        amount = amount1;
+    }
+}
 public class Kingdom : MonoBehaviour
 {
     public string name;
@@ -14,9 +23,8 @@ public class Kingdom : MonoBehaviour
     public int troopsInvading;
     public General general;
 
-     bool gotUpdate1 = false;
-    bool gotUpdate2 = false;
-    bool gotUpdat3 = false;
+    public float genericSpeedMultiplier = 1f;
+    public float oreMultiplier;
 
     public float perUnitWood = 0.09f;
     public float perUnitFargel = 0.05f;
@@ -45,19 +53,31 @@ public class Kingdom : MonoBehaviour
         resources.Add(item);
     }
 
+
+    public bool HasResource(resource item)
+    {
+        foreach(resource res in resources)
+        {
+            if (res.type == item.type && res.amount >= item.amount)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public bool removeResources(resource item)
     {
         for(int i = 0; i < resources.Count; i++)
         {
             if(item.type == resources[i].type)
             {
-                if(item.amount < resources[i].amount)
+                if(item.amount <resources[i].amount)
                 {
                 resources[i] = new resource(resources[i].type, resources[i].amount - item.amount);
                 return true;
                 }
                 else if(item.amount == resources[i].amount){
-                    resources.Remove(item);
+                    resources.RemoveAt(i);
                     return true;
                 }
             }
@@ -66,6 +86,7 @@ public class Kingdom : MonoBehaviour
     }
     void Start()
     {
+        oreMultiplier = 1f;
         resources = new List<resource>();
         if(distance == 0){
         general = GetComponent<OwnedGenerals>().startingGeneral;
@@ -88,7 +109,7 @@ public class Kingdom : MonoBehaviour
         troops -= troopsInvading;
         }
 
-        float travelDuration = Mathf.Abs(distance - invadee.distance) / general.speed;
+        float travelDuration = Mathf.Abs(distance - invadee.distance) / (general.speed * genericSpeedMultiplier);
         if(distance == 0)
         {
             Invoke(nameof(Invade), travelDuration * 2);
@@ -122,8 +143,8 @@ public class Kingdom : MonoBehaviour
 
         Debug.Log("An army from the " + name + " kingdom led by "+general.name+" has invaded the " + invadee.name + " kingdom! ");
         
-        int invaderStrength = (int) (troopsInvading * Random.Range(0.85f, 1.15f) * general.atk);
-        int invadeeStrength = (int)(invadee.troops * ((invadee.wallStrength / general.siege) + 1) * Random.Range(0.85f, 1.15f));
+        int invaderStrength = (int) (troopsInvading * UnityEngine.Random.Range(0.85f, 1.15f) * general.atk);
+        int invadeeStrength = (int)(invadee.troops * ((invadee.wallStrength / general.siege) + 1) * UnityEngine.Random.Range(0.85f, 1.15f));
         
         if (invaderStrength <= 0)
         {
@@ -141,18 +162,18 @@ public class Kingdom : MonoBehaviour
         }
         else if (result > 1f)
         {
-            troopsInvading -= (int)(troopsInvading * (1 - 1/Random.Range(1.2f, 1.8f)) * general.def);
-            invadee.troops = (int)(invadee.troops / Random.Range(1.1f, 1.5f));
+            troopsInvading -= (int)(troopsInvading * (1 - 1/UnityEngine.Random.Range(1.2f, 1.8f)) * general.def);
+            invadee.troops = (int)(invadee.troops / UnityEngine.Random.Range(1.1f, 1.5f));
             Debug.Log("Some troops didn't make it.");
         }
         else if (result > 0.4f)
         {
-            int moneyLost = (int)(invadee.money * Random.Range(0.2f, 0.4f)* general.looting);
+            int moneyLost = (int)(invadee.money * UnityEngine.Random.Range(0.2f, 0.4f)* general.looting);
             money += moneyLost;
             invadee.money -= moneyLost;
-            invadee.troops = (int)(invadee.troops / Random.Range(1.2f, 1.8f));
-            troopsInvading = (int)(troopsInvading * (1 - 1 / Random.Range(1.1f, 1.5f)));
-            invadee.wallStrength *= Random.Range(0.3f, 0.6f);
+            invadee.troops = (int)(invadee.troops / UnityEngine.Random.Range(1.2f, 1.8f));
+            troopsInvading = (int)(troopsInvading * (1 - 1 / UnityEngine.Random.Range(1.1f, 1.5f)));
+            invadee.wallStrength *= UnityEngine.Random.Range(0.3f, 0.6f);
             Debug.Log("The invadee was robbed of " + moneyLost + " gold. Their wall was damaged and some troops didn't make it");
         }
         else
@@ -182,6 +203,6 @@ public class Kingdom : MonoBehaviour
 
     public int DrawValue(float probability)
     {
-        return (int) (Random.Range(0f, 2f) * probability * troopsMining);
+        return (int) (UnityEngine.Random.Range(0f, 2f) * probability * troopsMining);
     }
 }

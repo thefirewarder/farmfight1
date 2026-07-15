@@ -15,7 +15,7 @@ public class Ore : MonoBehaviour
     {
         if (data.playerControlled)
         {
-            kingdom.money += value;
+            kingdom.money += (int) (value * kingdom.oreMultiplier);
             data.map.setTile(data.location, "dirt");
         }
     }
