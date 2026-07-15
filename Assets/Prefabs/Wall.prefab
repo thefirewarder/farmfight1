@@ -104,3 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5bc4f2ee306af4c912fd0e792be0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  sprite: {fileID: 2868539044483428322, guid: 27aa667725475834d932f35ad0447e37, type: 3}
+  sprite2: {fileID: 7433124376718983041, guid: 5306dcdd9c3fbc14e83940a322809bc3, type: 3}
+  sprite3: {fileID: 7081527322082503550, guid: 2d3b25b7c3d01744ab814556794cf19b, type: 3}
+  sprite4: {fileID: 5829327391341016614, guid: 7fe7ec9c8af7db34f95a59ed2ffc5969, type: 3}

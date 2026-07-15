@@ -4,6 +4,10 @@ public class cameraSelection : MonoBehaviour
 {
     public tileMap map;
     public Inventory inventory;
+    public WallDmgDisplay dmgDisplay;
+    public int wallUpCost = 75;
+    public int wallUpCost2 = 135;
+    public int wallUpCost3 = 300;
 
    Kingdom kingdom;
     void Start()
@@ -11,6 +15,7 @@ public class cameraSelection : MonoBehaviour
         kingdom = GameObject.FindWithTag("Player").GetComponent<Kingdom>();
         map = FindFirstObjectByType<tileMap>();
         inventory = FindFirstObjectByType<Inventory>();
+        dmgDisplay = GetComponent<WallDmgDisplay>();
     }
 
     void Update()
@@ -46,7 +51,28 @@ public class cameraSelection : MonoBehaviour
              if(worldData.playerControlled && worldData.type != "house"){
             map.setTile(worldCoords, "house");
              }
-        }
+             if(worldData.type == "wall")
+            {
+                if(kingdom.maxStrength == 0.5f && kingdom.money >= wallUpCost)
+                {
+                    kingdom.money -= wallUpCost;
+                    kingdom.maxStrength = 0.8f;
+                    kingdom.wallStrength = kingdom.maxStrength;
+                }
+                else if(kingdom.maxStrength == 0.8f && kingdom.money >= wallUpCost2)
+                {
+                    kingdom.money -= wallUpCost2;
+                    kingdom.maxStrength = 1.5f;
+                    kingdom.wallStrength = kingdom.maxStrength;
+                }
+                else if(kingdom.maxStrength == 1.5f && kingdom.money >= wallUpCost3)
+                {
+                    kingdom.money -= wallUpCost3;
+                    kingdom.maxStrength = 2.5f;
+                    kingdom.wallStrength = kingdom.maxStrength;
+                }
+            }
+            }
         if (Input.GetMouseButtonDown(2)) 
             {
                 if(inventory.items.Count == 0){

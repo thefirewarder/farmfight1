@@ -36,20 +36,21 @@ public class AttackSelection : MonoBehaviour
         1 => fireKingdom,
         2 => pirateKingdom,
         3 => banditKingdom,
-        _ => null
+        4 => null
     };
-
-    if (targetKingdom == null)
+     if (playerKingdom.invadee != null)
         return;
-
-    if (playerKingdom.invadee != null)
-        return;
-
+    if (targetKingdom == null){
+        playerKingdom.troopsMining = troopsSent;
+        playerKingdom.troops -= troopsSent;
+        playerKingdom.StartMineMarch();
+    }
+    else{
     playerKingdom.invadee = targetKingdom;
     playerKingdom.troopsInvading = troopsSent;
     playerKingdom.troops -= troopsSent;
     playerKingdom.StartArmyMarch();
-
+    }
     civDropdown.SetValueWithoutNotify(0);
 }
 
