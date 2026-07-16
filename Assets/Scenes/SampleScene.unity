@@ -2789,7 +2789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22457152, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 900
+      value: 775
       objectReference: {fileID: 0}
     - target: {fileID: 22457152, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6882,7 +6882,7 @@ MonoBehaviour:
   - craftList:
     - resources:
       - type: wood
-        amount: 3
+        amount: 6
       e:
         m_PersistentCalls:
           m_Calls:
@@ -6902,9 +6902,9 @@ MonoBehaviour:
   - craftList:
     - resources:
       - type: wood
-        amount: 3
-      - type: fargelstone
         amount: 5
+      - type: fargelstone
+        amount: 8
       e:
         m_PersistentCalls:
           m_Calls:
@@ -6923,7 +6923,7 @@ MonoBehaviour:
       name: Fargelstone Pickaxe
     - resources:
       - type: fargelstone
-        amount: 6
+        amount: 10
       e:
         m_PersistentCalls:
           m_Calls:
