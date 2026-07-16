@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Market : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class Market : MonoBehaviour
     public int landCost = 15;
     public int campCost = 35;
     Kingdom kingdom;
+    public TMP_InputField foodInput;
     Inventory invScript;
      void Start()
     {
@@ -16,10 +18,13 @@ public class Market : MonoBehaviour
 
     public void sellFood()
     {
-        if(foodScript.currentFood >= 1)
+        if(int.TryParse(foodInput.text, out int sale)){
+        if(foodScript.currentFood >= sale)
         {
-            foodScript.currentFood--;
-            kingdom.money++;
+            foodScript.currentFood-=sale;
+            kingdom.money+=sale;
+            foodInput.text = "";
+        }
         }
     }
 

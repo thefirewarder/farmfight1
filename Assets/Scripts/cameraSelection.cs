@@ -78,9 +78,11 @@ public class cameraSelection : MonoBehaviour
                 if(inventory.items.Count == 0){
                     return;
                 }
-                string itemType = inventory.items[0].type;
-                invItem item = new invItem(inventory.items[0].type, 1);
-                bool wasRemoved = inventory.removeItems(new invItem(inventory.items[0].type, 1));
+                invItem item1 = inventory.GetSelectedItem();
+                if(item1 != null) return;
+                string itemType = item1.type;
+                invItem item = new invItem(itemType, 1);
+                bool wasRemoved = inventory.removeItems(new invItem(itemType, 1));
                 if (wasRemoved)
                 {
                     switch(itemType){

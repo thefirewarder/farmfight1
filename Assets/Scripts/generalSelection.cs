@@ -13,6 +13,8 @@ public class generalSelection : MonoBehaviour
         playerKingdom = GameObject.FindWithTag("Player").GetComponent<Kingdom>();
         ownedGenerals = GameObject.FindWithTag("Player").GetComponent<OwnedGenerals>();
         genDropdown = GetComponent<TMP_Dropdown>();
+        
+        genDropdown.onValueChanged.AddListener(SelectGeneral);
     }
 
     void Update()

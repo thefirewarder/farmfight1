@@ -6,6 +6,7 @@ using System.Linq;
 public record invItem(string type, int amount);
 public class Inventory : MonoBehaviour
 {
+    public int selector = 0;
     public List<invItem> items;
     public TMP_Text invBox;
     void Start()
@@ -16,6 +17,14 @@ public class Inventory : MonoBehaviour
     void Update()
     {
            invBox.text = "Inventory: "+string.Join(", ",items.Select(i => i.type + "(" + i.amount + ")"));
+        if (Input.GetKeyDown("1"))
+        {
+            selector = 0;
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            selector = 1;
+        }
     }
 
     public void addItems(invItem item)
@@ -49,5 +58,14 @@ public class Inventory : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public invItem GetSelectedItem()
+    {
+        if(items.Count > selector)
+        {
+            return items[selector];
+        }
+        return null;
     }
 }
