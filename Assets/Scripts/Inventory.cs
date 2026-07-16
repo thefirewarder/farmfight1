@@ -2,8 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using System.Linq;
-
-public record invItem(string type, int amount);
+using invItem = resource;
 public class Inventory : MonoBehaviour
 {
     public int selector = 0;
@@ -52,7 +51,7 @@ public class Inventory : MonoBehaviour
                 return true;
                 }
                 else if(item.amount == items[i].amount){
-                    items.Remove(item);
+                    items.RemoveAt(i);
                     return true;
                 }
             }

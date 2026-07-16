@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Linq;
+
+using invItem = resource;
 public class cameraSelection : MonoBehaviour
 {
     public tileMap map;
@@ -42,7 +44,11 @@ public class cameraSelection : MonoBehaviour
                         kingdom.wallStrength = kingdom.maxStrength;
                     }
                 }
-                 if(worldData.playerControlled){
+                if(worldData.TryGetComponent<Crafter>(out Crafter cr))
+            {
+                cr.enabled = !cr.enabled;
+            }
+                 else if(worldData.playerControlled){
             map.setTile(worldCoords,"crop");
                  }
         }
@@ -79,7 +85,7 @@ public class cameraSelection : MonoBehaviour
                     return;
                 }
                 invItem item1 = inventory.GetSelectedItem();
-                if(item1 != null) return;
+                if(item1 == null) return;
                 string itemType = item1.type;
                 invItem item = new invItem(itemType, 1);
                 bool wasRemoved = inventory.removeItems(new invItem(itemType, 1));

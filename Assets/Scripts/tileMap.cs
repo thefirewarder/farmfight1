@@ -12,6 +12,7 @@ public class tileMap : MonoBehaviour
     public GameObject gold;
     public GameObject copper;
     public GameObject silver;
+    public GameObject townhall;
 
     public float goldChance = 100f;
 
@@ -20,10 +21,10 @@ public class tileMap : MonoBehaviour
     public float copperChance = 25f;
     public Dictionary<string, GameObject> types;
     GameObject[,] map;
-    int minX = 20;
-    int maxX = 21;
-    int minY = 20;
-    int maxY = 21;
+    int minX = 30;
+    int maxX = 31;
+    int minY = 30;
+    int maxY = 31;
  
     void Start() 
     {
@@ -36,6 +37,7 @@ public class tileMap : MonoBehaviour
         types["gold"]=gold;
         types["silver"]=silver;
         types["copper"] = copper;
+        types["townhall"] = townhall;
         folder = new GameObject("folder");
         map = new GameObject[mapSize.x,mapSize.y];
         for(int x = 0; x < mapSize.x; x++){
