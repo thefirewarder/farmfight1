@@ -5192,7 +5192,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 4
+  m_CharacterLimit: 7
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -8248,6 +8248,7 @@ MonoBehaviour:
   landCost: 15
   foodInput: {fileID: 189538877}
   BasicLandTxt: {fileID: 1767694975}
+  mustIncreaseCost: 0
 --- !u!114 &1918295092
 MonoBehaviour:
   m_ObjectHideFlags: 0
