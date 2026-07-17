@@ -8,6 +8,7 @@ public class House : MonoBehaviour
     Kingdom kingdom;
     tileData data;
     public float timer = 0f;
+    public int troopChance = 3;
     void Start()
     {
         data = GetComponent<tileData>();
@@ -33,7 +34,7 @@ public class House : MonoBehaviour
             {
                 for(int y = 0; y < data.map.mapSize.y; y++)
                 {
-                    if(data.map.getTileAtPosition(new Vector2Int(x, y)).GetComponent<tileData>().type == "camp")
+                    if(data.map.getTileAtPosition(new Vector2Int(x, y)).GetComponent<tileData>().type == "camp" && Random.Range(1, troopChance) == 1)
                     {
                         kingdom.troops++;
                     }
