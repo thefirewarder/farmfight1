@@ -4,10 +4,13 @@ using TMPro;
 using invItem = resource;
 public class Market : MonoBehaviour
 {
+    public int landBought = 0;
     Food foodScript;
     public int landCost = 15;
     Kingdom kingdom;
     public TMP_InputField foodInput;
+    public TMP_Text BasicLandTxt;
+    public bool mustIncreaseCost = false;
     Inventory invScript;
      void Start()
     {
@@ -33,7 +36,17 @@ public class Market : MonoBehaviour
         if(kingdom.money >= landCost)
         {
             kingdom.money -= landCost;
+            landBought++;
             invScript.addItems(new invItem("land", 1));
+            if(mustIncreaseCost){
+            landCost++;
+            mustIncreaseCost = false;
+            }
+            else
+            {
+            mustIncreaseCost = true;
+            }
+            BasicLandTxt.text = "Buy Land ("+landCost+")";
         }
     }
 }

@@ -8244,8 +8244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6594eb9c692f94f845d05a07ec8954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  landBought: 0
   landCost: 15
   foodInput: {fileID: 189538877}
+  BasicLandTxt: {fileID: 1767694975}
 --- !u!114 &1918295092
 MonoBehaviour:
   m_ObjectHideFlags: 0
