@@ -1537,6 +1537,8 @@ MonoBehaviour:
   copper: {fileID: 4294546820675596880, guid: 27d4d9fc625b4dd40942f1031216498f, type: 3}
   silver: {fileID: 4294546820675596880, guid: 4e2c26bb7389987478b55794111f4d7a, type: 3}
   townhall: {fileID: 6962236549999959763, guid: 1f17ffdf5dd495544bcd20b7d8f2f8d2, type: 3}
+  fargelbuilding: {fileID: 6962236549999959763, guid: 7aed80b458a914eb28b8abf36414ccc1, type: 3}
+  road: {fileID: 6962236549999959763, guid: 86182b86e915c44f79b8d8f2c4506042, type: 3}
   goldChance: 100
   silverChance: 40
   copperChance: 18
@@ -9489,6 +9491,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: Town Hall (25 money + 5 wood)
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: Fargelstone Refinery (50 money + 5 fargelstone)
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:

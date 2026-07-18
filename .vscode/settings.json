@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "farmfightv0.6.2.slnx",
+    "dotnet.defaultSolution": "farmfightv0.7.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }

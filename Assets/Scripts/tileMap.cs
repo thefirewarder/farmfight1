@@ -13,6 +13,8 @@ public class tileMap : MonoBehaviour
     public GameObject copper;
     public GameObject silver;
     public GameObject townhall;
+    public GameObject fargelbuilding;
+    public GameObject road;
 
     public float goldChance = 100f;
 
@@ -38,6 +40,8 @@ public class tileMap : MonoBehaviour
         types["silver"]=silver;
         types["copper"] = copper;
         types["townhall"] = townhall;
+        types["fargelbuilding"] = fargelbuilding;
+        types["road"] = road;
         folder = new GameObject("folder");
         map = new GameObject[mapSize.x,mapSize.y];
         for(int x = 0; x < mapSize.x; x++){

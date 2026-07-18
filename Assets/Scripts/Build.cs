@@ -30,6 +30,12 @@ public class Build : MonoBehaviour
             kingdom.removeResources(new resource("wood", 5));
             invScript.addItems(new invItem("townhall", 1));
         }
+        if(index == 3 && kingdom.money >= 50 && kingdom.HasResource(new resource("fargelstone", 5)))
+        {
+            kingdom.money -= 50;
+            kingdom.removeResources(new resource("fargelstone", 5));
+            invScript.addItems(new invItem("fargelbuilding", 1));
+        }
         buildDropdown.SetValueWithoutNotify(0);
     }
 }
