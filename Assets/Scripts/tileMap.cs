@@ -15,6 +15,8 @@ public class tileMap : MonoBehaviour
     public GameObject townhall;
     public GameObject fargelbuilding;
     public GameObject road;
+    public GameObject mallitebuilding;
+    public GameObject house2;
 
     public float goldChance = 100f;
 
@@ -23,10 +25,10 @@ public class tileMap : MonoBehaviour
     public float copperChance = 25f;
     public Dictionary<string, GameObject> types;
     GameObject[,] map;
-    int minX = 30;
-    int maxX = 31;
-    int minY = 30;
-    int maxY = 31;
+    int minX = 20;
+    int maxX = 21;
+    int minY = 20;
+    int maxY = 21;
  
     void Start() 
     {
@@ -41,6 +43,8 @@ public class tileMap : MonoBehaviour
         types["copper"] = copper;
         types["townhall"] = townhall;
         types["fargelbuilding"] = fargelbuilding;
+        types["mallitebuilding"] = mallitebuilding;
+        types["house2"] = house2;
         types["road"] = road;
         folder = new GameObject("folder");
         map = new GameObject[mapSize.x,mapSize.y];
@@ -86,11 +90,6 @@ public class tileMap : MonoBehaviour
         {
             return null;
         }
-    }
-
-    void Update()
-    {
-        
     }
 
     public GameObject getTileAtPosition(Vector2Int pos){

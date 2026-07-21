@@ -9,12 +9,14 @@ public class General : MonoBehaviour
     public float siege = 1f;
     public float looting = 1f;
 
+    public float vigilance = 1f;
+
     public string toString(){
-        return $"{name} - Attack: {atk}, Defense: {def}, Speed: {speed}, Siege: {siege}, Looting: {looting}";
+        return $"{name} - Attack: {atk}, Defense: {def}, Speed: {speed}, Siege: {siege}, Looting: {looting}, Vigilance: {vigilance}";
     }
 
     public string computeRarity(){
-        float mean = (atk + def + speed + siege + looting) / 5f;
+        float mean = (atk + def + speed + siege + looting + vigilance) / 6f;
         if(mean <= 1.1f){
             return "Common";
         }

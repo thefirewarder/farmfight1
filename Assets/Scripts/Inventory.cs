@@ -24,6 +24,10 @@ public class Inventory : MonoBehaviour
         {
             selector = 1;
         }
+        else if (Input.GetKeyDown("3"))
+        {
+            selector = 2;
+        }
     }
 
     public void addItems(invItem item)

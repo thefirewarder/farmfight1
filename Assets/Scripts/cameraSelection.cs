@@ -49,6 +49,14 @@ public class cameraSelection : MonoBehaviour
                 cr.enabled = !cr.enabled;
             }
                  else if(worldData.playerControlled){
+                if(worldData.type == "road")
+                {
+                    inventory.addItems(new invItem("road", 1));
+                }
+                else if(worldData.type == "house2")
+                {
+                    inventory.addItems(new invItem("house upgrade", 1));
+                }
             map.setTile(worldCoords,"crop");
                  }
         }
@@ -98,6 +106,16 @@ public class cameraSelection : MonoBehaviour
                             map.setTile(worldCoords,"dirt");
                         }
                         else{
+                            inventory.addItems(item);
+                        }
+                        break;
+                        case "house upgrade":
+                        if(worldData.type == "house")
+                        {
+                            map.setTile(worldCoords,"house2");
+                        }
+                        else
+                        {
                             inventory.addItems(item);
                         }
                         break;
