@@ -12,7 +12,7 @@ public class General : MonoBehaviour
     public float vigilance = 1f;
 
     public string toString(){
-        return $"{name} - Attack: {atk}, Defense: {def}, Speed: {speed}, Siege: {siege}, Looting: {looting}, Vigilance: {vigilance}";
+        return $"{name} - Attack: {atk}, Defense: {def}, Speed: {speed}, Siege: {siege}, Looting: {looting}";
     }
 
     public string computeRarity(){

@@ -19,6 +19,10 @@ public class MarketValue : MonoBehaviour
         {
             timer = 0f;
             value += Random.Range(-5, 6);
+            if(value < 0)
+            {
+                value = 0;
+            }
         }
         arkTxt.text = "Arksaloid Market Value: "+value+".";
         if (Input.GetKeyDown(KeyCode.Space))

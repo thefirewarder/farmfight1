@@ -23,6 +23,7 @@ public class tileMap : MonoBehaviour
     public float silverChance = 50f;
 
     public float copperChance = 25f;
+    
     public Dictionary<string, GameObject> types;
     GameObject[,] map;
     int minX = 20;

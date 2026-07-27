@@ -13,9 +13,17 @@ public class Inventory : MonoBehaviour
         items = new List<invItem>();
     }
 
+    string ColorIfTrue(string str, bool shouldColor)
+    {
+        if (!shouldColor)
+        {
+            return str;
+        }
+        return "<color=yellow>"+str+"</color>";
+    }
     void Update()
     {
-           invBox.text = "Inventory: "+string.Join(", ",items.Select(i => i.type + "(" + i.amount + ")"));
+           invBox.text = "Inventory: "+string.Join(", ",items.Select((i, index) => ColorIfTrue(i.type + "(" + i.amount + ")",index == selector)));
         if (Input.GetKeyDown("1"))
         {
             selector = 0;
