@@ -5,6 +5,7 @@ using System.Linq;
 using invItem = resource;
 public class Inventory : MonoBehaviour
 {
+    bool shiftPressed = false;
     public int selector = 0;
     public List<invItem> items;
     public TMP_Text invBox;
@@ -23,16 +24,17 @@ public class Inventory : MonoBehaviour
     }
     void Update()
     {
+        shiftPressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
            invBox.text = "Inventory: "+string.Join(", ",items.Select((i, index) => ColorIfTrue(i.type + "(" + i.amount + ")",index == selector)));
-        if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("1") && !shiftPressed)
         {
             selector = 0;
         }
-        else if (Input.GetKeyDown("2"))
+        else if (Input.GetKeyDown("2") && !shiftPressed)
         {
             selector = 1;
         }
-        else if (Input.GetKeyDown("3"))
+        else if (Input.GetKeyDown("3") && !shiftPressed)
         {
             selector = 2;
         }

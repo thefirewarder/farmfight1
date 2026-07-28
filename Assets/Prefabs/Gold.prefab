@@ -104,3 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e9e98b4fbcb59489e80f5ff4ebc3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  value: 50
+  resName: gold ingot

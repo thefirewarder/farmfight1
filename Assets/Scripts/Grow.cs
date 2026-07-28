@@ -10,6 +10,7 @@ public class Grow : MonoBehaviour
 
     public float timer = 0f;
     public float timer2 = 0f;
+    public Transmutation transmutation;
 
     Food foodScript;
     public float timerLength;
@@ -18,6 +19,7 @@ public class Grow : MonoBehaviour
     void Start()
     {
         foodScript = FindFirstObjectByType<Food>();
+        transmutation = FindFirstObjectByType<Transmutation>();
     }
 
     void Update()
@@ -111,6 +113,15 @@ public class Grow : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if(transmutation.currentEffect == "Boon of Agriculture")
+        {
+            farmingPower *= 1.3f;
+        }
+        else if(transmutation.currentEffect == "Curse of the Drought")
+        {
+            farmingPower *= 0.7f;
         }
 
         timer += Time.deltaTime * farmingPower;

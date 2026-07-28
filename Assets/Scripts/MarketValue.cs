@@ -9,7 +9,7 @@ public class MarketValue : MonoBehaviour
     void Start()
     {
         timer = 0f;
-        value = Random.Range(20, 31);
+        value = Random.Range(40, 51);
         playerKingdom = GameObject.FindWithTag("Player").GetComponent<Kingdom>();
     }
     void Update()
@@ -24,7 +24,7 @@ public class MarketValue : MonoBehaviour
                 value = 0;
             }
         }
-        arkTxt.text = "Arksaloid Market Value: "+value+".";
+        arkTxt.text = "Arksaloid Market Value: "+value;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if(playerKingdom.HasResource(new resource("arksaloid", 1)))
